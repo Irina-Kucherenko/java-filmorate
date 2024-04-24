@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 public class ReleaseDateValidator implements ConstraintValidator<ReleaseDate, LocalDate> {
 
-    private final LocalDate MIN_DATE = LocalDate.parse("1895-12-28");
+    private final LocalDate CUTOFF_DATE = LocalDate.parse("1895-12-28");
 
 
     @Override
@@ -18,6 +18,6 @@ public class ReleaseDateValidator implements ConstraintValidator<ReleaseDate, Lo
 
     @Override
     public boolean isValid(LocalDate date, ConstraintValidatorContext constraintValidatorContext) {
-        return MIN_DATE.isBefore(date);
+        return CUTOFF_DATE.isBefore(date);
     }
 }
