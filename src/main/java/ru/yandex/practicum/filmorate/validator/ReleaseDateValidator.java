@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 public class ReleaseDateValidator implements ConstraintValidator<ReleaseDate, LocalDate> {
 
-    private final LocalDate DATE = LocalDate.parse("1895-12-28");
+    private static final LocalDate DATE = LocalDate.parse("1895-12-28");
 
 
     @Override
