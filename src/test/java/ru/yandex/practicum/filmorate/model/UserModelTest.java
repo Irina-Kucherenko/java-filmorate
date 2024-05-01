@@ -18,7 +18,7 @@ class UserModelTest {
                 .id(1)
                 .email("irinaspbirina@gmail.com")
                 .login("redemption")
-                .nick("боба")
+                .name("боба")
                 .birthday(LocalDate.parse("2005-04-28")).build();
         Assertions.assertThat(user).isNotNull();
         var violations = validator.validate(user);
@@ -33,7 +33,7 @@ class UserModelTest {
                 .id(1)
                 .email("irinaspbirinagmail.com")
                 .login("")
-                .nick("")
+                .name("")
                 .birthday((LocalDate.MAX)).build();
         Assertions.assertThat(user).isNotNull();
         var violations = validator.validate(user);
@@ -48,9 +48,8 @@ class UserModelTest {
                 .id(1)
                 .email("irinaspbirina@gmail.com")
                 .login("redemption")
-                .nick("")
                 .birthday(LocalDate.parse("2005-04-28")).build();
-        Assertions.assertThat(user.getNick()).isEqualTo(user.getLogin());
+        Assertions.assertThat(user.getName()).isEqualTo(user.getLogin());
         var violations = validator.validate(user);
         Assertions.assertThat(violations).isEmpty();
     }
