@@ -7,10 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryStorageFilm implements FilmStorage{
+public class InMemoryStorageFilm implements FilmStorage {
 
     private final Map<Integer, Film> films = new HashMap<>();
     private int idCounter = 0;
+
     @Override
     public void addFilm(Film film) {
         film.setId(idCounter);
