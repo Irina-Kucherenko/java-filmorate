@@ -20,17 +20,17 @@ public class User {
     @Pattern(regexp = "^\\S+$", message = "Логин пустой или имеет пробелы!")
     private String login;
 
-    private String nick;
+    private String name;
 
     @PastOrPresent(message = "Некорректная дата рождения!")
 
     private LocalDate birthday;
 
-    public User(int id, String email, String login, String nick, LocalDate birthday) {
+    public User(int id, String email, String login, String name, LocalDate birthday) {
         this.id = id;
         this.email = email;
         this.login = login;
-        this.nick = nick.isEmpty() ? login : nick;
+        this.name = name == null ? login : name;
         this.birthday = birthday;
     }
 }
