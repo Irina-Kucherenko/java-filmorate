@@ -10,7 +10,7 @@ import java.util.Map;
 public class InMemoryStorageUser implements UserStorage {
 
     private final Map<Integer, User> users = new HashMap<>();
-    private int idCounter = 0;
+    private int idCounter = 1;
 
     @Override
     public User createUser(User user) {

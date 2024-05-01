@@ -10,7 +10,7 @@ import java.util.Map;
 public class InMemoryStorageFilm implements FilmStorage {
 
     private final Map<Integer, Film> films = new HashMap<>();
-    private int idCounter = 0;
+    private int idCounter = 1;
 
     @Override
     public Film addFilm(Film film) {
