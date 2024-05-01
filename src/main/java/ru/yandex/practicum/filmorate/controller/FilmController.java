@@ -16,7 +16,7 @@ public class FilmController {
 
     private final InMemoryStorageFilm serviceFilm = new InMemoryStorageFilm();
 
-    @PostMapping(value = "/film", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/films", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String addFilm(@Valid @RequestBody Film film) {
         log.info("Добавление нового фильма: " + film);
         try {
@@ -27,7 +27,7 @@ public class FilmController {
         }
     }
 
-    @PutMapping(value = "/film", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/films", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String updateFilm(@Valid @RequestBody Film film) {
         log.info("Обновление фильма: " + film.getId());
         try {
@@ -38,7 +38,7 @@ public class FilmController {
         }
     }
 
-    @GetMapping(value = "/film", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/films", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public List<Film> getFilms() {
         log.info("Весь каталог фильмов:");
         return serviceFilm.getFilms();

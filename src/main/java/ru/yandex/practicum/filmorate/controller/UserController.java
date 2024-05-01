@@ -16,7 +16,7 @@ public class UserController {
 
     private final InMemoryStorageUser serviceUser = new InMemoryStorageUser();
 
-    @PostMapping(value = "/user", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String createUser(@Valid @RequestBody User user) {
         log.info("Создание нового пользователя: " + user);
         try {
@@ -27,7 +27,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(value = "/user", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String updateUser(@Valid @RequestBody User user) {
         log.info("Обновление пользователя: " + user.getId());
         try {
@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    @GetMapping(value = "/user", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public List<User> getUsers() {
         log.info("Весь список пользователей:");
         return serviceUser.getUsers();
