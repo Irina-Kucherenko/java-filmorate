@@ -17,25 +17,15 @@ public class UserController {
     private final InMemoryStorageUser serviceUser = new InMemoryStorageUser();
 
     @PostMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public String createUser(@Valid @RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) {
         log.info("Создание нового пользователя: " + user);
-        try {
-            serviceUser.createUser(user);
-            return "Пользователь успешно создан";
-        } catch (Exception e) {
-            return "При создании нового пользователя произошла ошибка: " + e.getMessage();
-        }
+        return serviceUser.createUser(user);
     }
 
     @PutMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public String updateUser(@Valid @RequestBody User user) {
+    public User updateUser(@Valid @RequestBody User user) {
         log.info("Обновление пользователя: " + user.getId());
-        try {
-            serviceUser.updateUser(user);
-            return "Пользователь успешно обновлён";
-        } catch (Exception e) {
-            return "При обновлении пользователя произошла ошибка: " + e.getMessage();
-        }
+        return serviceUser.updateUser(user);
     }
 
     @GetMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
