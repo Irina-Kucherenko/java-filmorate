@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.storage.film;
 
+import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 
 import java.util.ArrayList;
@@ -22,8 +23,12 @@ public class InMemoryStorageFilm implements FilmStorage {
 
     @Override
     public Film updateFilm(Film film) {
-        films.put(film.getId(), film);
-        return film;
+        if (films.containsKey(film.getId())) {
+            films.put(film.getId(), film);
+            return film;
+        } else {
+            throw new ValidationException("Фильм не найден");
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.storage.user;
 
+import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.ArrayList;
@@ -22,8 +23,12 @@ public class InMemoryStorageUser implements UserStorage {
 
     @Override
     public User updateUser(User user) {
-        users.put(user.getId(), user);
-        return user;
+        if (users.containsKey(user.getId())) {
+            users.put(user.getId(), user);
+            return user;
+        } else {
+            throw new ValidationException("Пользователь не найден");
+        }
     }
 
     @Override
