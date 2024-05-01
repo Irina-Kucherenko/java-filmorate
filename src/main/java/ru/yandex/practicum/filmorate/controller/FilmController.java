@@ -15,6 +15,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class FilmController {
 
     private final InMemoryStorageFilm serviceFilm = new InMemoryStorageFilm();
+
     @PostMapping(value = "/film", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String addFilm(@Valid @RequestBody Film film) {
         log.info("Добавление нового фильма: " + film);
