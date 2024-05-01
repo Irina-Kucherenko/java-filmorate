@@ -28,7 +28,7 @@ public class FilmController {
         return serviceFilm.updateFilm(film);
     }
 
-    @GetMapping(value = "/films", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/films", produces = APPLICATION_JSON_VALUE)
     public List<Film> getFilms() {
         log.info("Весь каталог фильмов:");
         return serviceFilm.getFilms();

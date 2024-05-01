@@ -28,7 +28,7 @@ public class UserController {
         return serviceUser.updateUser(user);
     }
 
-    @GetMapping(value = "/users", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users", produces = APPLICATION_JSON_VALUE)
     public List<User> getUsers() {
         log.info("Весь список пользователей:");
         return serviceUser.getUsers();
