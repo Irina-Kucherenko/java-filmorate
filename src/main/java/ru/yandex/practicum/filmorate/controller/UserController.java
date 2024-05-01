@@ -15,6 +15,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class UserController {
 
     private final InMemoryStorageUser serviceUser = new InMemoryStorageUser();
+
     @PostMapping(value = "/user", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public String createUser(@Valid @RequestBody User user) {
         log.info("Создание нового пользователя: " + user);
