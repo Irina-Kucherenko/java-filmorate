@@ -2,7 +2,6 @@ package ru.yandex.practicum.filmorate.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.yandex.practicum.filmorate.exception.ResourceNotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
@@ -27,13 +26,13 @@ public class UserService {
         return userStorage.getUsers();
     }
 
-    public User addFriend(Integer currentUserId, Integer newFriendId) {
+    public String addFriend(Integer currentUserId, Integer newFriendId) {
         userStorage.checkUser(currentUserId);
         userStorage.checkUser(newFriendId);
         if (userStorage.addFriend(currentUserId, newFriendId)) {
-            return userStorage.getUser(newFriendId);
+            return "Друг успешно добавлен!";
         } else {
-            throw new ResourceNotFoundException("Друг был добавлен ранее!");
+            return "Друг был добавлен ранее!";
         }
     }
 

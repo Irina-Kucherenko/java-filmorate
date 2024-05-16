@@ -33,11 +33,6 @@ public class InMemoryStorageUser implements UserStorage {
     }
 
     @Override
-    public User getUser(Integer id) {
-        return users.get(id);
-    }
-
-    @Override
     public boolean addFriend(Integer currentUserId, Integer newFriendId) {
         return updateFriendsList(currentUserId, newFriendId) && updateFriendsList(newFriendId, currentUserId);
     }
