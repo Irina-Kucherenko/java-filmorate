@@ -7,7 +7,6 @@ import jakarta.validation.ValidatorFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 import java.time.LocalDate;
 
 class FilmModelTest {

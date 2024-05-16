@@ -17,6 +17,7 @@ public interface UserStorage {
     boolean deleteFriend(Integer currentUserId, Integer deleteFriendId);
 
     List<User> getCommonFriendsList(Integer currentUserId, Integer otherUserId);
+
     List<User> getFriends(Integer currentUserId);
 
 }

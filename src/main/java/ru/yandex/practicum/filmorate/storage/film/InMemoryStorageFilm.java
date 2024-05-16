@@ -59,12 +59,12 @@ public class InMemoryStorageFilm implements FilmStorage {
 
     @Override
     public List<Film> getTopFilms(int countFilms) {
-       return likesMap.entrySet()
-               .stream()
-               .sorted((o1, o2) -> o2.getValue().size() - o1.getValue().size())
-               .map(e -> films.get(e.getKey()))
-               .limit(countFilms)
-               .toList();
+        return likesMap.entrySet()
+                .stream()
+                .sorted((o1, o2) -> o2.getValue().size() - o1.getValue().size())
+                .map(e -> films.get(e.getKey()))
+                .limit(countFilms)
+                .toList();
     }
 
     @Override
