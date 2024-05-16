@@ -18,6 +18,7 @@ public class UserService {
     }
 
     public User updateUser(User user) {
+        userStorage.checkUser(user.getId());
         return userStorage.updateUser(user);
     }
 
@@ -26,6 +27,8 @@ public class UserService {
     }
 
     public String addFriend(Integer currentUserId, Integer newFriendId) {
+        userStorage.checkUser(currentUserId);
+        userStorage.checkUser(newFriendId);
         if (userStorage.addFriend(currentUserId, newFriendId)) {
             return "Друг успешно добавлен!";
         } else {
@@ -34,6 +37,8 @@ public class UserService {
     }
 
     public String deleteFriend(Integer currentUserId, Integer deleteFriendId) {
+        userStorage.checkUser(currentUserId);
+        userStorage.checkUser(deleteFriendId);
         if (userStorage.deleteFriend(currentUserId, deleteFriendId)) {
             return "Друг успешно удалён!";
         } else {
@@ -42,10 +47,13 @@ public class UserService {
     }
 
     public List<User> getCommonFriendsList(Integer currentUserId, Integer otherUserId) {
+        userStorage.checkUser(currentUserId);
+        userStorage.checkUser(otherUserId);
         return userStorage.getCommonFriendsList(currentUserId, otherUserId);
     }
 
     public List<User> getFriends(Integer currentUserId) {
+        userStorage.checkUser(currentUserId);
         return userStorage.getFriends(currentUserId);
     }
 }

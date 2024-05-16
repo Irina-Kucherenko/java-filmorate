@@ -23,12 +23,8 @@ public class InMemoryStorageFilm implements FilmStorage {
 
     @Override
     public Film updateFilm(Film film) {
-        if (films.containsKey(film.getId())) {
-            films.put(film.getId(), film);
-            return film;
-        } else {
-            throw new ResourceNotFoundException("Фильм не найден.");
-        }
+        films.put(film.getId(), film);
+        return film;
     }
 
     @Override
@@ -74,6 +70,12 @@ public class InMemoryStorageFilm implements FilmStorage {
                 .filter(e -> e.getValue().contains(userId))
                 .map(e -> films.get(e.getKey()))
                 .toList();
+    }
+
+    public void checkFilm(Integer filmId) {
+        if (!films.containsKey(filmId)) {
+            throw new ResourceNotFoundException("Фильм с id" + filmId + " не найден.");
+        }
     }
 
 

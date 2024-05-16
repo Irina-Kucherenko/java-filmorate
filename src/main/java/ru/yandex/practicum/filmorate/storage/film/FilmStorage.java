@@ -19,5 +19,5 @@ public interface FilmStorage {
 
     List<Film> getUserLikes(Integer userId);
 
-
+    void checkFilm(Integer filmId);
 }

@@ -23,12 +23,8 @@ public class InMemoryStorageUser implements UserStorage {
 
     @Override
     public User updateUser(User user) {
-        if (users.containsKey(user.getId())) {
-            users.put(user.getId(), user);
-            return user;
-        } else {
-            throw new ResourceNotFoundException("Пользователь не найден.");
-        }
+        users.put(user.getId(), user);
+        return user;
     }
 
     @Override
@@ -76,6 +72,12 @@ public class InMemoryStorageUser implements UserStorage {
             return friendsMap.get(currentUserId).remove(newFriendId);
         } else {
             throw new ResourceNotFoundException("Пользователь не найден.");
+        }
+    }
+
+    public void checkUser(Integer userId) {
+        if (!users.containsKey(userId)) {
+            throw new ResourceNotFoundException("Пользователь с id" + userId + " не найден.");
         }
     }
 

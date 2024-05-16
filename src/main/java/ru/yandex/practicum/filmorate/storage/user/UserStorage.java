@@ -20,4 +20,6 @@ public interface UserStorage {
 
     List<User> getFriends(Integer currentUserId);
 
+    void checkUser(Integer userId);
+
 }
