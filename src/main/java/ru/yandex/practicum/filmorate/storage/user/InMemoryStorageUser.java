@@ -77,11 +77,10 @@ public class InMemoryStorageUser implements UserStorage {
     }
 
     private boolean deleteFriendFromList(Integer currentUserId, Integer newFriendId) {
-        if (friendsMap.containsKey(currentUserId)) {
-            return friendsMap.get(currentUserId).remove(newFriendId);
-        } else {
+        if (!friendsMap.containsKey(currentUserId)) {
             return false;
         }
+        return friendsMap.get(currentUserId).remove(newFriendId);
     }
 
     public void checkUser(Integer userId) {
