@@ -2,6 +2,7 @@ package ru.yandex.practicum.filmorate.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.yandex.practicum.filmorate.exception.ResourceNotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
@@ -43,7 +44,7 @@ public class UserService {
         if (userStorage.deleteFriend(currentUserId, deleteFriendId)) {
             return "Друг успешно удалён!";
         } else {
-            return "Друг был удалён ранее!";
+            throw new ResourceNotFoundException("Друг не был найден!");
         }
     }
 
