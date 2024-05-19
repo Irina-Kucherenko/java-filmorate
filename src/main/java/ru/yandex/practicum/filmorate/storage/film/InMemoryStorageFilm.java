@@ -33,6 +33,11 @@ public class InMemoryStorageFilm implements FilmStorage {
     }
 
     @Override
+    public Film getFilm(Integer filmId) {
+        return films.get(filmId);
+    }
+
+    @Override
     public boolean addLike(Integer filmId, Integer userId) {
         if (likesMap.containsKey(filmId)) {
             return likesMap.get(filmId).add(userId);

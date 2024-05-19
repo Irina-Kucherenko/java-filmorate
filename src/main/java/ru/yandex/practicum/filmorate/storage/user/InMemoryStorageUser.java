@@ -33,6 +33,11 @@ public class InMemoryStorageUser implements UserStorage {
     }
 
     @Override
+    public User getUser(Integer id) {
+        return users.get(id);
+    }
+
+    @Override
     public boolean addFriend(Integer currentUserId, Integer newFriendId) {
         return updateFriendsList(currentUserId, newFriendId) && updateFriendsList(newFriendId, currentUserId);
     }
@@ -56,7 +61,7 @@ public class InMemoryStorageUser implements UserStorage {
         if (friendsMap.containsKey(currentUserId)) {
             return friendsMap.get(currentUserId).stream().map(users::get).toList();
         } else {
-            return new ArrayList<>();
+            return Collections.emptyList();
         }
     }
 

@@ -2,6 +2,7 @@ package ru.yandex.practicum.filmorate.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.storage.film.FilmStorage;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
@@ -28,13 +29,13 @@ public class FilmService {
         return filmStorage.getFilms();
     }
 
-    public String addLike(Integer filmId, Integer userId) {
+    public Film addLike(Integer filmId, Integer userId) {
         filmStorage.checkFilm(filmId);
         userStorage.checkUser(userId);
         if (filmStorage.addLike(filmId, userId)) {
-            return "Лайк успешно добавлен!";
+            return filmStorage.getFilm(filmId);
         } else {
-            return "Лайк был добавлен ранее!";
+            throw new ValidationException("Ошибка при добавление лайка!");
         }
     }
 
