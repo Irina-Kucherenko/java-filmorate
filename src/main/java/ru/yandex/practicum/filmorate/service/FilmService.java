@@ -15,6 +15,7 @@ public class FilmService {
 
     private final FilmStorage filmStorage;
     private final UserStorage userStorage;
+    private static final int TOP_FILMS_NUMBER = 10;
 
     public Film addFilm(Film film) {
         return filmStorage.addFilm(film);
@@ -51,7 +52,7 @@ public class FilmService {
 
     public List<Film> getTopFilms(Integer countFilms) {
         if (countFilms == null) {
-            countFilms = 10;
+            countFilms = TOP_FILMS_NUMBER;
         }
         return filmStorage.getTopFilms(countFilms);
     }
