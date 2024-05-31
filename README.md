@@ -1,2 +1,2 @@
 # java-filmorate
-![Diagram.jpg](Diagram.jpg)
+![Data_base_scheme.jpg](Data_base_scheme.jpg)
