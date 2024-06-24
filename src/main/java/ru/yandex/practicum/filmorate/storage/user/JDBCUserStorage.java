@@ -57,8 +57,7 @@ public class JDBCUserStorage implements UserStorage {
                 if (user != null) {
                     userList.add(user);
                 }
-            }
-            while (rs.next());
+            } while (rs.next());
         });
         return userList;
     }
