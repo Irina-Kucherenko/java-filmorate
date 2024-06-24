@@ -45,7 +45,7 @@ public class UserController {
 
     @PutMapping(value = "/users/{id}/friends/{friendId}", produces = APPLICATION_JSON_VALUE)
     public User addFriend(@PathVariable(name = "id") Integer id,
-                            @PathVariable(name = "friendId") Integer friendId) {
+                          @PathVariable(name = "friendId") Integer friendId) {
         log.info("Добавление нового друга с id" + friendId + " к пользователю с id" + id + ":");
         return serviceUser.addFriend(id, friendId);
     }
