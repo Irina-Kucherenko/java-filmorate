@@ -72,8 +72,7 @@ public class JDBCFilmStorage implements FilmStorage {
                     film.setGenres(getFilmGenres(film.getId()));
                     filmList.add(film);
                 }
-            }
-            while (rs.next());
+            } while (rs.next());
         });
         return filmList;
 
