@@ -1,6 +1,7 @@
 package ru.yandex.practicum.filmorate.storage.film;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 @Primary
+@Slf4j
 public class JDBCFilmStorage implements FilmStorage {
 
     private final JdbcTemplate jdbcTemplate;
@@ -98,10 +100,11 @@ public class JDBCFilmStorage implements FilmStorage {
     @Override
     public boolean addLike(Integer filmId, Integer userId) {
         try {
-            jdbcTemplate.execute(String.format("INSERT INTO USER_FILM_LIKE (user_id, film_id) " +
+            jdbcTemplate.execute(String.format("MERGE INTO USER_FILM_LIKE (user_id, film_id) " +
                     "VALUES (%d, %d)", userId, filmId));
             return true;
         } catch (Exception e) {
+            log.error("Ошибка при добавлении лайка");
             return false;
         }
     }
