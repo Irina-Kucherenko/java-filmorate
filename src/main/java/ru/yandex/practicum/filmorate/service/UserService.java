@@ -2,7 +2,7 @@ package ru.yandex.practicum.filmorate.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.yandex.practicum.filmorate.exception.ValidationException;
+import ru.yandex.practicum.filmorate.exception.ResourceNotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
@@ -27,13 +27,17 @@ public class UserService {
         return userStorage.getUsers();
     }
 
+    public User getUser(Integer id) {
+        return userStorage.getUser(id);
+    }
+
     public User addFriend(Integer currentUserId, Integer newFriendId) {
         userStorage.checkUser(currentUserId);
         userStorage.checkUser(newFriendId);
         if (userStorage.addFriend(currentUserId, newFriendId)) {
             return userStorage.getUser(newFriendId);
         } else {
-            throw new ValidationException("Ошибка при добавлении друга!");
+            throw new ResourceNotFoundException("Ошибка при добавлении друга!");
         }
     }
 

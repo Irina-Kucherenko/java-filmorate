@@ -83,6 +83,7 @@ public class InMemoryStorageUser implements UserStorage {
         return friendsMap.get(currentUserId).remove(newFriendId);
     }
 
+    @Override
     public void checkUser(Integer userId) {
         if (!users.containsKey(userId)) {
             throw new ResourceNotFoundException("Пользователь с id" + userId + " не найден.");

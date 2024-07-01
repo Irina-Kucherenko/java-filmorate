@@ -30,6 +30,12 @@ public class FilmController {
         return serviceFilm.updateFilm(film);
     }
 
+    @GetMapping(value = "/films/{id}", produces = APPLICATION_JSON_VALUE)
+    public Film getFilm(@PathVariable(name = "id") Integer id) {
+        log.info("Получения фильма с id" + id + ": ");
+        return serviceFilm.getFilm(id);
+    }
+
     @GetMapping(value = "/films", produces = APPLICATION_JSON_VALUE)
     public List<Film> getFilms() {
         log.info("Весь каталог фильмов:");
@@ -38,7 +44,7 @@ public class FilmController {
 
     @PutMapping(value = "/films/{id}/like/{userId}", produces = APPLICATION_JSON_VALUE)
     public Film addLike(@PathVariable(name = "id") Integer id,
-                          @PathVariable(name = "userId") Integer userId) {
+                        @PathVariable(name = "userId") Integer userId) {
         log.info("Добавление лайка пользователя с id" + userId + " к фильму с id" + id + ":");
         return serviceFilm.addLike(id, userId);
     }
